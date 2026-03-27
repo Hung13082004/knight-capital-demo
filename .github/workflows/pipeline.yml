@@ -25,13 +25,14 @@ jobs:
           exit 1
         fi
 
-    # LỚP BẢO VỆ 2: PHÂN TÍCH SÂU
+    # LỚP BẢO VỆ 2: PHÂN TÍCH SÂU VÀ CHẶN NẾU RỚT
     - name: Layer 2 - SonarCloud Analysis (Deep Scan)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Hung13082004_knight-capital-demo
+      # Thêm -Dsonar.qualitygate.wait=true để bắt GitHub Actions đứng đợi và chặn nếu rớt
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Hung13082004_knight-capital-demo -Dsonar.qualitygate.wait=true
 
-    # BƯỚC CUỐI: ĐÓNG GÓI
+    # BƯỚC CUỐI: ĐÓNG GÓI (Sẽ KHÔNG được chạy nếu Layer 2 bị rớt)
     - name: 3. Đóng gói sản phẩm (Build Artifact)
       run: mvn -B package --file pom.xml
