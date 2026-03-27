@@ -23,4 +23,5 @@ public class TradingSystem {
             if (orders > 1000) break; // Dừng giả lập sau 1000 lệnh
         }
     }
-}
+} 
+// test pull request
