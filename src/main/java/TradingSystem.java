@@ -2,20 +2,21 @@ public class TradingSystem {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
     
-	public static void main(String[] args) {
-	System.out.println("Hệ thống SMARS bắt đầu hoạt động...");
+    public static void main(String[] args) {
+        System.out.println("Hệ thống SMARS bắt đầu hoạt động...");
         // Giả lập server cũ nhận Flag=1 (nhẽ ra là lệnh mới nhưng code cũ hiểu là Power Peg)
         int receivedFlag = 1; 
         executeOrder(receivedFlag);
     }
-	
+    
     public static void executeOrder(int flag) {
         if (flag == 1) {
         // ĐÂY LÀ MÃ NGUỒN CHẾT (DEAD CODE) LẼ RA PHẢI XÓA TỪ 8 NĂM TRƯỚC
-            activatePowerPegMode(); 
+            chayCheDoCu(); 
         }
     }
-    private static void activatePowerPegMode() {
+    
+    private static void chayCheDoCu() {
         int orders = 0;
         while (true) {
             orders++;
