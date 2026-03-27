@@ -24,6 +24,11 @@ jobs:
           echo " ❌  CẢNH BÁO: Phát hiện hàm Power Peg cũ! Dừng Pipeline ngay lập tức."
           exit 1
         fi
+    # ==========================================
+    # LỚP BẢO VỆ 1.5: CHẠY UNIT TEST
+    # ==========================================
+    - name: Layer 1.5 - Unit Testing (JUnit)
+      run: mvn -B test
 
     # LỚP BẢO VỆ 2: PHÂN TÍCH SÂU VÀ CHẶN NẾU RỚT
     - name: Layer 2 - SonarCloud Analysis (Deep Scan)
